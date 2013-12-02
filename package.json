@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "name": "com.dawsonloudon.backgroundapi”,
+    "cordova_name": “backgroundapi”,
+    "description": “run external api calls on a background thread”,
+    "license": "Apache 2.0",
+    "keywords": [
+        “backgroundapi”,
+        “api”,
+	“external”
+    ],
+    "engines": []
+}
