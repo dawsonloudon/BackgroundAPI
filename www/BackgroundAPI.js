@@ -1,42 +1,33 @@
 /*-
- * cordova BackgroundAPI Plugin for Android and iOS
+ * cordova BackgroundAPI Plugin for iOS
  *
  * Created by Dawson Loudon 2013 MIT Licensed
  *
  * Usages:
  *
- * plugins.backgroundAPI.call({ url: 'http://www.google.com/api', type: 'GET', data: { name: 'Some One', age-range: '20-30' } }, functionName); //full example
- * plugins.backgroundAPI.call({ url: 'http://www.google.com/api' }, null); //minimum usage
+ * backgroundAPI.makeApiCall({ url: 'http://www.google.com/api', type: 'GET', data: { name: 'Some One', age-range: '20-30' } }, functionName); //full example
+ * backgroundAPI.makeApiCall({ url: 'http://www.google.com/api' }, null); //minimum usage
  */
 
-	/**
-	 * Empty Constructor
-	 */
-	var BackgroundAPI = function() {
-	};
+var exec = require('cordova/exec');
 
-	/**
-	 * Make a call
-	 */
-	BackgroundAPI.prototype.call = function(params,callback) {
-		var default = {
+var BackgroundAPI = {
+	makeApiCall: function(params,callback) {
+		var defaults = {
 			url: null,
-			type: 'GET',
-			data: null
+			dataType: 'GET',
+			dataItems: null
 		};
 
-		for(var key in default) {
+		for(var key in defaults) {
 			if(typeof params[key] !== 'undefined') {
-				default[key] = params[key];
+				defaults[key] = params[key];
 			}
 		}
 
-		cordova.exec(callback,null,'BackgroundAPI','call', new Array(default));
+		exec(callback,null,'BackgroundAPI','makeApiCall', [defaults]);
 	}
 
-        /**
-         * Register this plugin with cordova
-         */
-        var backgroundAPI = new BackgroundAPI();
+};
 
-        module.exports = backgroundAPI;
+module.exports = BackgroundAPI;

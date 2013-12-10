@@ -4,8 +4,8 @@
 
 @property (nonatomic, strong) CDVInvokedUrlCommand *theCommand;
 
-- (void)call:(CDVInvokedUrlCommand *)command;
-- (void)runCall:(NSDictionary *)params;
-- (void)callReturn:(NSDictionary *)theResults;
+- (void)makeApiCall:(CDVInvokedUrlCommand *)command;
+- (void)runApiCall:(NSDictionary *)params;
+- (void)apiCallReturn:(NSDictionary *)theResults;
 
 @end;
